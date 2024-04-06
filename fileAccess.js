@@ -29,4 +29,6 @@ async function processDirectory() {
 processDirectory().then((filesMap) => {
   // Here, you can iterate over filesMap to save data to Firebase or for any other processing
   // Each key in filesMap is a file name, and its value is an array of the file's cleaned lines
+  
+  
 });
