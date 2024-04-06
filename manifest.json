@@ -11,10 +11,6 @@
       "fileSystem",
       "activeTab"
     ],
-    "action": {
-      "default_popup": "test.html",
-      "default_icon": "hamborger.png"
-    },
     "icons": {
         "128": "hamborger.png"
     },
