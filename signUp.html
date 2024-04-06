@@ -8,15 +8,25 @@
 
 <script>
   const firebaseConfig = {
-    // Your Firebase config
-  };
+    // Import the functions you need from the SDKs you need
+    apiKey: "AIzaSyATvQnh_weeGZycNWcJmKzGeHH8uR3mi9U",
+    authDomain: "wildhacks2024-c4ebe.firebaseapp.com",
+    projectId: "wildhacks2024-c4ebe",
+    storageBucket: "wildhacks2024-c4ebe.appspot.com",
+    messagingSenderId: "633918308151",
+    appId: "1:633918308151:web:cb76ba44f6869c08fb64b2",
+    measurementId: "G-5N3Z29D7RD"
+};
+
+// Initialize Firebase
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
   // Initialize Firebase
   const app = firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
   const db = firebase.firestore();
 </script>
-
 
 <script>
     // Replace YOUR_CLIENT_ID with your actual client ID
