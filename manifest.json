@@ -3,11 +3,22 @@
     "name": "WH 2024 - Test",
     "description": "Base Level Extension",
     "version": "1.0",
+    "background": {
+      "service_worker": "background.js"
+    },
+    "permissions": [
+      "sidePanel",
+      "fileSystem",
+      "activeTab"
+    ],
+    "action": {
+      "default_popup": "test.html",
+      "default_icon": "hamborger.png"
+    }
     "icons": {
         "128": "hamborger.png"
     },
     "side_panel": {
         "default_path": "sidepanel.html"
     },
-    "permissions": ["sidePanel"]
-}
+} 
