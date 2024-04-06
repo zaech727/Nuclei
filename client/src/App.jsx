@@ -1,10 +1,12 @@
 import Navbar from "./components/Navbar";
+import Dashboard from "./components/Dashboard";
 
 const App = () => {
   return (
-    <div className="w-full p-6">
-      <div className="flex h-screen">
+    <div className="w-full">
+      <div className="flex ">
         <Navbar />
+        <Dashboard />
       </div>
     </div>
   );
