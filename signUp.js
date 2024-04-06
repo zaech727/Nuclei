@@ -4,27 +4,25 @@ document.getElementById('signup-form').addEventListener('submit', (e) => {
     const email = document.getElementById('user-email').value;
     const password = document.getElementById('user-password').value;
 
-    // Attempt to sign in with the provided email and password
-    auth.signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-            // User logged in successfully
-            console.log("User logged in successfully:", userCredential.user);
-            // Redirect to another page after successful login
-            window.location.href = 'sidepanel.html'; // Ensure this points to your next page's URL or path
-        })
-        .catch((error) => {
-            // Handle errors, such as wrong password or user not found
-            const errorCode = error.code;
-            const errorMessage = error.message;
+    // Assuming `db` is your Firestore instance initialized earlier
+    // `email` and `password` are the user inputs to check
 
-            if (errorCode === 'auth/user-not-found') {
-                alert("No user found with this email.");
-            } else if (errorCode === 'auth/wrong-password') {
-                alert("Incorrect password.");
-            } else {
-                alert(errorMessage); // Generic error message for other errors
-            }
+    db.collection("Email&Pass").doc(email).get()
+    .then((doc) => {
+    if (doc.exists && doc.data().password === password) {
+        // The document exists and the password matches
+        console.log("User found and authenticated:", doc.data());
+        window.location.href = 'sidepanel.html'; // Redirect on successful login
+    } else {
+        // No document found or password does not match
+        alert("Incorrect email or password.");
+    }
+    })
+    .catch((error) => {
+    console.error("Error searching user:", error);
+    alert("An error occurred while trying to log in.");
+    });
 
-            console.error("Error during sign in:", error);
-        });
+
 });
+
