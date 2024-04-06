@@ -3,6 +3,12 @@
     "name": "WH 2024 - Test",
     "description": "Base Level Extension",
     "version": "1.0",
+    "permissions": [
+      "http://localhost:3000/*"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
     "action": {
       "default_popup": "test.html",
       "default_icon": "hamborger.jpg"
