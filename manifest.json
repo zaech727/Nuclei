@@ -3,8 +3,15 @@
     "name": "WH 2024 - Test",
     "description": "Base Level Extension",
     "version": "1.0",
+    "background": {
+      "service_worker": "background.js"
+    },
+    "permissions": [
+      "fileSystem",
+      "activeTab"
+    ],
     "action": {
       "default_popup": "test.html",
       "default_icon": "hamborger.png"
     }
-  }
+  } 
