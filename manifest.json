@@ -7,6 +7,7 @@
       "service_worker": "background.js"
     },
     "permissions": [
+      "sidePanel",
       "fileSystem",
       "activeTab"
     ],
@@ -14,4 +15,10 @@
       "default_popup": "test.html",
       "default_icon": "hamborger.png"
     }
-  } 
+    "icons": {
+        "128": "hamborger.png"
+    },
+    "side_panel": {
+        "default_path": "sidepanel.html"
+    },
+} 
