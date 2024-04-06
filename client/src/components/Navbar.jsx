@@ -8,7 +8,7 @@ const Navbar = () => {
                     </div>
                     {/* Navigation */}
                     <nav className="flex flex-col flex-grow bg-gray-800">
-                        <ul className="py-4">
+                        <ul className="p-4 w-64 text-center">
                             <li className="px-4 py-2 text-white">Events</li>
                             <li className="px-4 py-2 text-white">Graph</li>
                             <li className="px-4 py-2 text-white">Calendar</li>
