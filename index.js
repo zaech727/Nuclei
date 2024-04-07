@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const algoliasearch = require('algoliasearch');
-const { Configuration, OpenAIApi } = require('openai');
+const OpenAIApi = require('openai');
 const admin = require('firebase-admin');
 
 // Set up Firebase Admin
@@ -33,40 +33,44 @@ app.get('/', (req, res) => {
 
 app.post('/generate-response', async (req, res) => {
     try {
-        const userQuery = req.body.query;
-
-        // Algolia search
-        const algoliaResults = await algoliaIndex.search(userQuery);
-        const algoliaData = algoliaResults.hits.map(hit => hit.title).join(', ');
-
-        // Firebase - Retrieve OpenAI API Key
-        const apiKeyDoc = await db.collection('APIkeys').doc('OpenAI').get();
-        if (!apiKeyDoc.exists) {
-            return res.status(404).send('API Key document does not exist.');
-        }
-        const openAIKey = apiKeyDoc.data().key;
-
-        // Configure OpenAI
-        const configuration = new Configuration({
-            apiKey: openAIKey
-        });
-        const openai = new OpenAIApi(configuration);
-
-        // OpenAI - Create completion
-        const prompt = `Based on the following data: ${algoliaData}, the user query was: ${userQuery}.`;
-        const gptResponse = await openai.createCompletion({
-            model: 'text-davinci-003',
-            prompt: prompt,
-            max_tokens: 150
-        });
-
+      const userQuery = req.body.query;
+  
+      // Algolia search
+      const algoliaResults = await algoliaIndex.search(userQuery);
+      const algoliaData = algoliaResults.hits.map(hit => hit.title).join(', ');
+  
+      // Firebase - Retrieve OpenAI API Key
+      const apiKeyDoc = await db.collection('APIkeys').doc('OpenAI').get();
+      if (!apiKeyDoc.exists) {
+        return res.status(404).send('API Key document does not exist.');
+      }
+      const openAIKey = apiKeyDoc.data().key;
+  
+      // Configure OpenAI
+      const configuration = {
+        apiKey: openAIKey,
+      };
+      const openai = new OpenAIApi.OpenAI(configuration);
+  
+      // OpenAI - Create completion
+      const prompt = `Based on the following data: ${algoliaData}, the user query was: ${userQuery}.`;
+      const gptResponse = await openai.chat.completions.create({
+          messages: [{role: 'user', content: prompt}],
+        model: 'gpt-3.5-turbo'
+      });
+      // Check if the OpenAI response is valid
+      if (gptResponse && gptResponse.choices[0]) {
         // Send response
-        res.status(200).json({ response: gptResponse.data.choices[0].text });
+        res.status(200).json({ response: gptResponse.choices[0].message.content.trim()});
+      } else {
+        // Handle the case when the OpenAI response is not valid
+        res.status(500).send('OpenAI API returned an invalid response.');
+      }
     } catch (error) {
-        console.error('Error:', error);
-        res.status(500).send('An error occurred while processing your request.');
+      console.error('Error:', error);
+      res.status(500).send('An error occurred while processing your request.');
     }
-});
+  });
 
 const startServer = () => {
     app.listen(port, () => {
