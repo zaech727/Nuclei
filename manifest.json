@@ -4,7 +4,7 @@
     "description": "Base Level Extension",
     "version": "1.0",
     "permissions": [
-      "http://localhost:3000/*",
+      
       "sidePanel",
       "activeTab"
     ],

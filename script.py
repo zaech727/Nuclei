@@ -1,3 +1,5 @@
+import requests
+
 def find_available_times(events, day_range):
     events.sort(key=lambda x: x['start'])
     available_times = [{'start': day_range['start'], 'end': events[0]['start']}]
@@ -11,7 +13,8 @@ def find_available_times(events, day_range):
             
     if events[-1]['end'] < day_range['end']:
         available_times.append({'start': events[-1]['end'], 'end': day_range['end']})
-        
+    
+    # Make a curl request to a test link and submit available_times as input
+    response = requests.post('https://example.com/api', json=available_times)
+    
     return available_times
-
-

@@ -15,7 +15,7 @@ const data = [
     { value: 20, text: "Signup", isDir:false, url:"https://example.com"},
     { value: 40, text: "Admin", isDir:true, url:""},
     { value: 20, text: "Treasurer", isDir:true, url:""},
-    { value: 20, text: "Ledger", isDir:false, url:"https://example.com"}
+    { value: 20, text: "Ledger", isDir:false, url:"https://example.com"},
 ];
 
 // Create and bind data to visual elements (circles and text in this case)
@@ -65,7 +65,9 @@ node.append("text")
     .text((d) => d.text);
 
 function ticked() {
-    node.attr("transform", (d) => `translate(${d.x},${d.y})`);
+    // node.attr("transform", (d) => `translate(${d.x},${d.y})`);
+    svg.selectAll(".node")
+    .attr("transform", d => `translate(${d.x},${d.y})`);
 
     link.attr("x1", (d) => d.source.x)
         .attr("y1", (d) => d.source.y)
@@ -109,3 +111,111 @@ function clicked(event, d) {
         //simulation.alpha(1).restart();
     }
 }
+
+document.getElementById("search-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const searchValue = document.getElementById("searchbar").value;
+    const searchResult = nodes.find((node) => node.text === searchValue);
+    if (searchResult) {
+        alert("Node found");
+    } else {
+        alert("Node not found");
+    }
+});
+document.getElementById("file-upload-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    
+    // Calculate center
+    const svgWidth = svg.node().getBoundingClientRect().width;
+    const svgHeight = svg.node().getBoundingClientRect().height;
+    const centerX = svgWidth / 2;
+    const centerY = svgHeight / 2;
+
+    // Update simulation with new nodes
+    simulation.nodes(nodes).on("tick", ticked);
+    simulation.alpha(1).restart();
+    
+    const zipFile = document.getElementById("file").files[0];
+    const zip = new JSZip();
+    const fileListElement = document.getElementById("file-list");
+
+    zip.loadAsync(zipFile)
+        .then(function(contents) {
+            // Clear previous results
+            fileListElement.innerHTML = '';
+
+            // Create a list to display the file names
+            const ul = document.createElement('ul');
+            fileListElement.appendChild(ul);
+            
+            let folderLink = -1;
+            // Loop through the files in the zip
+            Object.keys(contents.files).forEach(function(filename) {
+                const file = contents.files[filename];
+                // Create an item for each file/folder
+                const li = document.createElement('li');
+                let newNode = null;
+                // Check if the item is a folder
+                if (file.dir) {
+                    li.textContent = `[Folder] ${filename}`;
+                    currFolder = filename;
+                    newNode = { id: nodes.length, value: 20, text: filename, isDir:true, url:"", centered: false};
+                    folderLink = nodes.length;
+                } else {
+                    li.textContent = `[File] ${filename}`;
+                    newNode = { id: nodes.length, value: 20, text: filename, isDir:false, url:"https://example.com", centered: false};
+                }
+                if (folderLink != -1) {
+                    let newLink = { source: folderLink, target: nodes.length };
+                    
+    links.push(newLink);
+    const linkSelection = svg.selectAll(".link")
+    .data(links)
+    .append("line")
+    .attr("class", "link")
+    .attr("stroke", "gray");;
+                }
+    // Add the new node to the nodes array
+    nodes.push(newNode);
+    // Re-select nodes to apply the data join
+    const nodeSelection = svg.selectAll(".node")
+        .data(nodes, d => d.id); // Use the id for object constancy
+
+    // Enter new nodes
+    const newNodeSelection = nodeSelection.enter()
+        .append("g")
+        .attr("class", "node")
+        .call(d3.drag()
+            .on("start", dragstarted)
+            .on("drag", dragged)
+            .on("end", dragended))
+        .on("click", clicked);
+
+    newNodeSelection.append("circle")
+        .attr("r", d => d.value)
+        .attr("fill", d => d.isDir ? "steelblue" : "green");
+
+    newNodeSelection.append("text")
+        .attr("text-anchor", "middle")
+        .attr("dy", ".35em")
+        .text(d => d.text);
+                node.enter()
+                .data(nodes)
+                .append("g")
+                .attr("class", "node")
+                .call(d3.drag()
+                    .on("start", dragstarted)
+                    .on("drag", dragged)
+                    .on("end", dragended))
+                .on("click", clicked); // Add click event listener to nodes
+
+    simulation.nodes(nodes).on("tick", ticked);
+                simulation.alpha(1).restart();
+
+                ul.appendChild(li);
+            });
+        })
+        .catch(function(err) {
+            alert('Error reading zip file: ' + err.message);
+        });
+});
