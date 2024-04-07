@@ -53,7 +53,7 @@ app.post('/generate-response', async (req, res) => {
       const openai = new OpenAIApi.OpenAI(configuration);
   
       // OpenAI - Create completion
-      const prompt = `Based on the following data: ${algoliaData}, the user query was: ${userQuery}.`;
+    const prompt = `Based on the following data: ${algoliaData}, the user query was: ${userQuery}.`;
       const gptResponse = await openai.chat.completions.create({
           messages: [{role: 'user', content: prompt}],
         model: 'gpt-3.5-turbo'
@@ -78,7 +78,7 @@ const startServer = () => {
     }).on('error', (error) => {
       if (error.code === 'EADDRINUSE') {
         console.log(`Port ${port} is already in use, trying port ${port + 1}`);
-        port++;
+        port++; 
         startServer(); // Try to start the server again with the new port
       } else {
         console.error('Failed to start server:', error);

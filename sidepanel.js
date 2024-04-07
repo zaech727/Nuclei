@@ -114,27 +114,23 @@ function clicked(event, d) {
 
 document.getElementById("search-form").addEventListener("submit", (e) => {
     e.preventDefault();
-    const searchValue = document.getElementById("searchbar").value;
-    const searchResult = nodes.find((node) => node.text === searchValue);
-    if (searchResult) {
-        fetch("https://localhost:3000/generate-response", {
+    //const searchValue = document.getElementById("searchbar").value;
+    searchValue = "Last year, our Economics Club experienced a notable 25% increase in membership. Additionally, our guest speaker events saw a remarkable 40% boost in attendance. Moreover, our fundraising efforts yielded a substantial 50% rise in funds raised. Can you say how well our Economics Club is doing?";
+        fetch("http://localhost:3000/generate-response/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ data: searchResult })
-        })
+            }, 
+            body: JSON.stringify({ "query": searchValue })})
         .then(response => response.json())
         .then(data => {
-            alert(`Response: ${data}`);
+            alert(`Response: ${data.response}`);
         })
         .catch(error => {
             console.error("Error:", error);
-        });
-    } else {
-        alert("Document not found.");
-    }
+        })
 });
+
 document.getElementById("file-upload-form").addEventListener("submit", (e) => {
     e.preventDefault();
 
