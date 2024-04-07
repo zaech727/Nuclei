@@ -3,9 +3,6 @@
     "name": "WH 2024 - Test",
     "description": "Base Level Extension",
     "version": "1.0",
-    "background": {
-      "service_worker": "background.js"
-    },
     "permissions": [
       "sidePanel",
       "activeTab"
