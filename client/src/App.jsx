@@ -1,7 +1,6 @@
 import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
 import Graph from "./components/Graph";
-import Calendar from "./components/Calendar";
 import Members from "./components/Members";
 import Settings from "./components/Settings";
 

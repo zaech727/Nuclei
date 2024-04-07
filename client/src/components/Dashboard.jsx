@@ -1,6 +1,7 @@
 import EventCard from "./EventCard"
 import ProfileSidebar from "./ProfileSidebar";
 import Notifications from "./Notifications";
+import MeetingTimes from "./MeetingTimes";
 
 const Dashboard = () => {
     return (
@@ -15,6 +16,7 @@ const Dashboard = () => {
                 <EventCard eventName="General Meeting" location="Tech LR2" desc="The greatest GM of all time!" month="MAY" day="05" time="3:00 PM"/>
                 <EventCard eventName="Group Baking" location="2122 Sheridan" desc="Baking bread together - BYO ingredients!" month="APR" day="10" time="2:00 PM"/>
             </div>
+                <MeetingTimes />
             <ProfileSidebar />
         </div>
     );

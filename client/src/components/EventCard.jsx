@@ -14,7 +14,7 @@ const EventCard = ({ eventName, location, desc, month, day, time}) => {
 
     return (
         <div
-            className={`relative m-6 bg-white rounded-lg overflow-auto w-6/12 transition-all duration-300 hover:text-opacity-100 hover:bg-primarypink hover:drop-shadow-2xl hover:bg-opacity-50 shadow-lg ${isExpanded ? 'h-96' : 'h-28'}`}
+            className={`relative m-6 bg-white rounded-lg overflow-auto transition-all duration-300 hover:text-opacity-100 hover:bg-primarypink hover:drop-shadow-2xl hover:bg-opacity-50 shadow-lg ${isExpanded ? 'h-96' : 'h-28'}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
