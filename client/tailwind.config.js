@@ -30,6 +30,19 @@ export default {
       'black': '#000000',
     },
     extend: {
+      fontFamily: {
+        'riicookie': ['RiiCookie'],
+        'starflower': ['Starflower'],
+        'casual': ['Casual'],
+        'jost': ['Jost'],
+        'roboto': ['Roboto'],
+        'aldercy': ['Aldercy'],
+        'mistys': ['Mistys'],
+        'magnolia': ['Magnolia'],
+        'satisfy': ['Satisfy'],
+        'lora': ['Lora'],
+        'tangerine': ['Tangerine'],
+      },
       spacing: {
         '128': '32rem',
         '144': '36rem',

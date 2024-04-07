@@ -18,7 +18,7 @@ const App = () => {
   }
 
   return (
-    <div className="w-full" style={{ backgroundImage: `url(${bgimg})` }}>
+    <div className="w-full" style = {{ backgroundImage: `url(${bgimg})` }}>
       <div className="flex ">
         <Navbar onChange = {handleUpdate}/>
         
