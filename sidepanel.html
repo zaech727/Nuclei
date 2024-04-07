@@ -1,20 +1,25 @@
 <html>
   <head>
     <title>NUcleus Sidepanel - Chrome Extension</title>
-    <style>
-    </style>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@^2.0/dist/tailwind.min.css">
+<script src="https://d3js.org/d3.v6.min.js"></script>
+
   </head>
   <body>
-    <h1>NUcleus</h1>
-    <h3>Organize your club tasks, quick and easy!</p>
-    <form>
-      <p><label for="search">Search for:</label></p>
-      <input id="searchbar" type="text" name="search"></input>
-      <input type="submit" value="Search">
-    </form>
-    <h4>Graph View</h4>
+    <div class="flex items-center justify-center h-6/12 p-4 mt-4 text-offwhite">
+      <h1 class="text-7xl pt-0 font-bold text-[EF798A]">NUcleus</h1>
+      <img src="./client/src/assets/logo.png" alt="Nucleus Logo" class="w-24 h-24 m-2" />
+    </div>
+
+    <div class="flex items-center justify-center h-6/12 p-4 mt-4 text-offwhite">
+      
+    <h1 class="text-xl">Graph View</h1>
     <script type="text/javascript" src="node_modules/d3/dist/d3.js"></script>
     <script src= "sidepanel.js"></script>
+
+    </div>
 
   </body>
 </html>

@@ -5,5 +5,8 @@
     "d3.js": "^0.0.2-security",
     "firebase": "^10.10.0",
     "googleapis": "^134.0.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.3"
   }
 }
