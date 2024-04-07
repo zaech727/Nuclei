@@ -10,6 +10,7 @@ const Navbar = ({ onChange }) => {
                 <div className="flex flex-col justify-between h-full">
                     {/* Logo */}
                     <div className="flex flex-col items-center justify-center h-6/12 p-4 mt-4 text-offwhite">
+                        <h1 className="text-7xl pt-0 font-bold font-starflower text-primarypink">NUcleus</h1>
                         <img src={logo} alt="Nucleus Logo" className="w-20 h-20 m-2" />
                     </div>
                     {/* Navigation */}
