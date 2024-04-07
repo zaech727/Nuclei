@@ -1,4 +1,5 @@
 import React from 'react';
+import MiniStack from './MiniStack';
 
 const EventCard = () => {
     const [isExpanded, setIsExpanded] = React.useState(false);
@@ -13,7 +14,7 @@ const EventCard = () => {
 
     return (
         <div
-            className={`relative m-6 bg-white rounded-lg  overflow-hidden w-6/12 transition-all duration-300 hover:text-opacity-100 hover:bg-primarypink hover:drop-shadow-2xl hover:bg-opacity-50 shadow-lg ${isExpanded ? 'h-64' : 'h-28'}`}
+            className={`relative m-6 bg-white rounded-lg overflow-auto w-6/12 transition-all duration-300 hover:text-opacity-100 hover:bg-primarypink hover:drop-shadow-2xl hover:bg-opacity-50 shadow-lg ${isExpanded ? 'h-96' : 'h-28'}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
@@ -41,8 +42,28 @@ const EventCard = () => {
                 </div>
             </div>
             {isExpanded && (
-                <div className="absolute bottom-0 p-4 w-full">
-                    <h2 className="text-lg font-semibold">Expanded Content</h2>
+                <div className="absolute top-24 p-4 w-full">
+                    <div className="flex justify-normal">
+                        <div className="flex flex-col">
+                            <div className="mb-2">
+                                <h1 className="text-xl font-bold text-primarypurple mb-2">Reminders</h1>
+                                <p>Lorem ipsum dolor sit amet...</p>
+                            </div>
+                            <div className="flex flex-col">
+                                <h1 className="text-xl font-bold text-primarypurple">Links</h1>
+                                <button className="bg-primarypurple bg-opacity-50 rounded p-2 text-offwhite m-2">Trip Packet</button>
+                                <button className="bg-primarypurple bg-opacity-50 rounded p-2 text-offwhite m-2">Itinerary</button>
+                            </div>
+                        </div>
+                        <div className="flex flex-col ml-8">
+                            <div className="mb-2">
+                                <h1 className="text-xl font-bold text-primarypurple mb-2">Members</h1>
+                                <div className="flex items-center">
+                                    <MiniStack />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             )}
         </div>

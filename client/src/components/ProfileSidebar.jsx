@@ -1,18 +1,21 @@
 import logo from '../assets/logo.png';
+import Todo from './Todo';
+import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 
 const ProfileSidebar = () => {
     return (
-        <div className="flex w-64 flex-col items-center p-6 m-0  bg-primarypink bg-opacity-85">
-            <div className="w-24 h-24 mb-4 rounded-full">
-                <img src={logo} alt="Nucleus Logo" className="w-24 h-24 mb-4" />
+        <div className="flex w-84 flex-col items-center m-0  bg-primarypink bg-opacity-50">
+            <div className="flex p-8 pb-0">
+                <div className="text-right">
+                    <h1 className="text-xl text-secondarypurple">Welcome,</h1>
+                    <h2 className="text-2xl font-bold text-secondarypink">username!</h2>
+                </div>
+                <div className="w-24 h-24 rounded-full">
+                    <img src={logo} alt="Nucleus Logo" className="w-16 h-16 m-6 mt-0 object-fill" />
+                </div>
             </div>
-            
-            <div className="w-full mb-4 p-2 bg-white rounded-lg shadow-md">
-                <h1>calendar</h1>
-            </div>
-            <div className="w-full p-2 bg-white rounded-lg shadow-md">
-                <h1>todo list</h1>
-            </div>
+            <DateCalendar />
+            < Todo />
         </div>
     );
 };

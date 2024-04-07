@@ -38,10 +38,7 @@ export default {
         'roboto': ['Roboto'],
         'aldercy': ['Aldercy'],
         'mistys': ['Mistys'],
-        'magnolia': ['Magnolia'],
-        'satisfy': ['Satisfy'],
-        'lora': ['Lora'],
-        'tangerine': ['Tangerine'],
+        'cogley': ['Cogley'],
       },
       spacing: {
         '128': '32rem',
