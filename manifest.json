@@ -9,7 +9,7 @@
       "activeTab"
     ],
     "icons": {
-        "128": "hamborger.png"
+        "128": "logo.png"
     },
     "side_panel": {
         "default_path": "sidepanel.html"
