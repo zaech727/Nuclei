@@ -8,11 +8,9 @@ const ProfileSidebar = () => {
             <div className="flex p-8 pb-0">
                 <div className="text-right">
                     <h1 className="text-xl text-secondarypurple">Welcome,</h1>
-                    <h2 className="text-2xl font-bold text-secondarypink">username!</h2>
+                    <h2 className="text-2xl font-bold text-secondarypink">Leslie!</h2>
                 </div>
-                <div className="w-24 h-24 rounded-full">
-                    <img src={logo} alt="Nucleus Logo" className="w-16 h-16 m-6 mt-0 object-fill" />
-                </div>
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Profile Picture" className="w-16 h-16 m-8 mt-0 mr-0 rounded-full" />
             </div>
             <DateCalendar />
             < Todo />
