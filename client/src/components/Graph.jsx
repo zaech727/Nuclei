@@ -8,7 +8,7 @@ function loadGraph() {
     // Generate the graph using D3
     const svg = d3.select("#graph")
         .append("svg")
-        .attr("width", 985)
+        .attr("width", 900)
         .attr("height", 700)
         .style("border", "1px solid black");
 
@@ -39,7 +39,7 @@ function loadGraph() {
         ];
 
     const simulation = d3.forceSimulation(nodes)
-        //.force("charge", d3.forceManyBody().strength(-50))
+        .force("charge", d3.forceManyBody().strength(-50))
         .force("link", d3.forceLink(links).distance(150))
         .force("center", d3.forceCenter(493, 350))
         .force("collision", d3.forceCollide().radius((d) => d.value))
@@ -126,17 +126,20 @@ const Graph = () => {
     })
 
     return (
-        <div className="flex h-screen w-full">
+        <div className="flex h-screen w-full m-4 pl-4 backdrop-blur-lg bg-white bg-opacity-85 rounded-2xl drop-shadow-2xl">
             <div className="flex-grow bg-gray-100 p-4">
-                <div className="flex items-center w-full">
-                    <h1 className="text-xl font-bold">Graph</h1>
-                    <div className="ml-auto flex">
-                        <p>search</p>
-                        <p>notifications</p>
-                    </div>
+            <div className="flex items-center w-full">
+                <h1 className="text-4xl pt-4 font-bold text-secondarypurple">Graph</h1>
+                <div className="ml-auto flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="gray" className="w-6 h-6 mx-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="gray" className="w-6 h-6 mr-10">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+                    </svg>
                 </div>
-                <div id="graph">
-                   
+                </div>
+                <div id="graph" className="m-2">
                 </div>
             </div>
             <ProfileSidebar />
