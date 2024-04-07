@@ -11,6 +11,6 @@
         "128": "hamborger.png"
     },
     "side_panel": {
-        "default_path": "signUp.html"
+        "default_path": "sidepanel.html"
     }
 } 
