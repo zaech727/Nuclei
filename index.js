@@ -6,7 +6,7 @@ const OpenAIApi = require('openai');
 const admin = require('firebase-admin');
 
 // Set up Firebase Admin
-const serviceAccount = require('C:/WildHacks 2024/wildhacks2024-c4ebe-firebase-adminsdk-quhxo-3b8ec4503e.json');
+const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
