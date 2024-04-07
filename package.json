@@ -2,6 +2,8 @@
   "dependencies": {
     "chrome-types": "^0.1.277",
     "d3": "^7.9.0",
-    "d3.js": "^0.0.2-security"
+    "d3.js": "^0.0.2-security",
+    "firebase": "^10.10.0",
+    "googleapis": "^134.0.0"
   }
 }

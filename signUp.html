@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html> 
+ <!-- Adding google drive folders -->
+<script type="text/javascript" src="node_modules\googleapis\build\src\apis"></script>
+
+ <!-- Add Firebase SDKs for use in your project
+<script type="text/javascript" src="node_modules\firebase\firebase-app.js"></script>
+<script type="text/javascript" src="node_modules\firebase\firebase-auth.js"></script>
+<script type="text/javascript" src="node_modules\firebase\firebase-firestore.js"></script> -->
+
+<head>
+    <title>Signup Page</title>
+</head>
+<body>
+    <h2>Signup/Login</h2>
+    <form id="signup-form">
+        <input type="email" id="user-email" placeholder="Email" required><br>
+        <input type="password" id="user-password" placeholder="Password" required><br>
+        <button type="submit">Sign Up/Login</button>
+    </form>
+
+    <script src="path/to/your/firebaseConfig.js"></script>
+    <script src="signup.js"></script>
+
+        
+    <h4>Input parent folder:</h4>
+    <!-- Add folder input here -->
+    <input type="file" id="folderInput" webkitdirectory directory multiple />
+    <button id="processFolder">Process Folder</button>
+
+    <script src="signUp.js"></script>
+</body>
+</html>
