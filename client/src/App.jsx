@@ -28,7 +28,6 @@ const App = () => {
         
         {activePage === "Dashboard" && <Dashboard />}
         {activePage === "Graph" && <Graph />}
-        {activePage === "Calendar" && <Calendar />}
         
         {activePage === "Members" && <Members />}
         {activePage === "Settings" && <Settings />}
