@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @font-face {
+      font-family: 'RiiCookie';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('./assets/fonts/RiiCookieRt.otf');
+    }
+    @font-face {
+        font-family: 'Starflower';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('./assets/fonts/STARFLOWER.otf');
+      }
+      @font-face {
+        font-family: 'Casual';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('./assets/fonts/Casual-Regular.ttf');
+      }
+      @font-face {
+        font-family: 'Jost';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('./assets/fonts/Jost-Medium-BF63dc52d2d8452.ttf');
+      }
+        @font-face {
+            font-family: 'Aldercy';
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            src: url('./assets/fonts/Aldercy-Regular-BF65ff83b68440d.otf');
+        }
+        @font-face {
+            font-family: 'Mistys';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: url('./assets/fonts/Mistys-Relrica-DEMO-VERSION-BF660f61235f48f.otf');
+        }
+        
+  }

@@ -6,11 +6,13 @@
     "permissions": [
       "http://localhost:3000/*"
     ],
-    "background": {
-      "service_worker": "background.js"
+      "sidePanel",
+      "activeTab"
+    ],
+    "icons": {
+        "128": "hamborger.png"
     },
-    "action": {
-      "default_popup": "test.html",
-      "default_icon": "hamborger.jpg"
+    "side_panel": {
+        "default_path": "sidepanel.html"
     }
-  }
+} 
