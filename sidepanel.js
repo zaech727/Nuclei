@@ -117,19 +117,26 @@ document.getElementById("search-form").addEventListener("submit", (e) => {
     const searchValue = document.getElementById("searchbar").value;
     const searchResult = nodes.find((node) => node.text === searchValue);
     if (searchResult) {
-        alert("Node found");
+        fetch("https://localhost:3000/generate-response", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ data: searchResult })
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(`Response: ${data}`);
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
     } else {
-        alert("Node not found");
+        alert("Document not found.");
     }
 });
 document.getElementById("file-upload-form").addEventListener("submit", (e) => {
     e.preventDefault();
-    
-    // Calculate center
-    const svgWidth = svg.node().getBoundingClientRect().width;
-    const svgHeight = svg.node().getBoundingClientRect().height;
-    const centerX = svgWidth / 2;
-    const centerY = svgHeight / 2;
 
     // Update simulation with new nodes
     simulation.nodes(nodes).on("tick", ticked);
